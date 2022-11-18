@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace QuanLyHangHoaApplication
 {
-    public struct LoaiHang
+    public class LoaiHang
     {
-        public string CategoryID;
-        public string CategoryName;
+        public int CategoryID { get; set; }
+        public string CategoryName { get; set; }
     }
 
     public struct MatHang
     {
-        public string tenHang;
-        public string maHang;
-        public string hanDung;
-        public string congTySanXuat;
-        public string namSanXuat;
-        public LoaiHang loaihang;
+        public string ProductId { get; set; }
+        public string ProductName { get; set; }
+        public LoaiHang ProductCategory { get; set; }
+        public string ProductExpire { get; set; }
+        public string ProductDate { get; set; }
+        public string ProductCompany { get; set; }
     }
 
     public static class DataContainer
@@ -27,34 +27,64 @@ namespace QuanLyHangHoaApplication
         public static List<LoaiHang> categoryList = new List<LoaiHang>();
         public static List<MatHang> productList = new List<MatHang>();
 
-        public static void addCategory(string id, string name)
+        public static void addCategory(int id, string name)
         {
-            categoryList.Add(new LoaiHang() { CategoryID = "123", CategoryName = "nuoc ngot"});
+            categoryList.Add(new LoaiHang() { CategoryID = id, CategoryName = name});
         }
 
-        public static void deleteCategory()
+        public static void deleteCategory(int id)
         {
-            categoryList.RemoveAt(0);
+            var index = categoryList.FindIndex(item => item.CategoryID == id);
+            categoryList.RemoveAt(index);
         }
 
-        public static void editCategory()
+        public static void editCategory(int id, string name)
         {
-
+            var index = categoryList.FindIndex(item => item.CategoryID == id);
+            categoryList[index].CategoryName = name;
         }
 
-        public static void addProduct(string id, string name)
+        public static List<LoaiHang> searchCategory(string searchValue)
         {
-            categoryList.Add(new LoaiHang() { CategoryID = "123", CategoryName = "nuoc ngot" });
+            List<LoaiHang> tmp = new List<LoaiHang>();
+            foreach (var item in categoryList)
+            {
+                if (item.CategoryName.Contains(searchValue))
+                {
+                   tmp.Add(item);
+                }
+            }
+            return tmp;
         }
 
-        public static void deleteProduct()
+        public static void addProduct(MatHang item)
         {
-            categoryList.RemoveAt(0);
+            productList.Add(item);
         }
 
-        public static void editProduct()
+        public static void deleteProduct(string id)
         {
+            var index = productList.FindIndex(item => item.ProductId == id);
+            productList.RemoveAt(index);
+        }
 
+        public static void editProduct(MatHang value)
+        {
+            var index = productList.FindIndex(item => item.ProductId == value.ProductId);
+            productList[index] = value;
+        }
+
+        public static List<MatHang> searchProduct(string searchValue)
+        {
+            List<MatHang> tmp = new List<MatHang>();
+            foreach (var item in productList)
+            {
+                if (item.ProductName.Contains(searchValue))
+                {
+                    tmp.Add(item);
+                }
+            }
+            return tmp;
         }
     }
 }

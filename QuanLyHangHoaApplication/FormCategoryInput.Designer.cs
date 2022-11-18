@@ -1,6 +1,6 @@
 ﻿namespace QuanLyHangHoaApplication
 {
-    partial class FormLoaiHang
+    partial class FormCategoryInput
     {
         /// <summary>
         /// Required designer variable.
@@ -28,19 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TextBoxCategory = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // TextBoxCategory
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(212, 23);
-            this.textBox1.TabIndex = 0;
+            this.TextBoxCategory.Location = new System.Drawing.Point(12, 12);
+            this.TextBoxCategory.Name = "TextBoxCategory";
+            this.TextBoxCategory.Size = new System.Drawing.Size(212, 23);
+            this.TextBoxCategory.TabIndex = 0;
             // 
             // button1
             // 
+            this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.button1.Location = new System.Drawing.Point(238, 12);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 26);
@@ -55,9 +56,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(331, 50);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
-            this.Name = "FormLoaiHang";
+            this.Controls.Add(this.TextBoxCategory);
+            this.Name = "FormCategoryInput";
             this.Text = "Nhập tên loại hàng";
+            this.Load += new System.EventHandler(this.FormCategoryInput_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -65,7 +67,7 @@
 
         #endregion
 
-        private TextBox textBox1;
+        private TextBox TextBoxCategory;
         private Button button1;
     }
 }

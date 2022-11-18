@@ -2,17 +2,14 @@ namespace QuanLyHangHoaApplication
 {   
     public partial class FormApplication : Form
     {
-        //public static FormApplication instance;
         public FormApplication()
         {
             InitializeComponent();
-           /* instance = this;
-            matHangList = new List<MatHang>();*/
         }
         
         private void btnNhapLoaiHang_Click(object sender, EventArgs e)
         {
-           FormLoaiHang formLoaiHang = new FormLoaiHang();
+           FormCategoryInput formLoaiHang = new FormCategoryInput();
            formLoaiHang.ShowDialog();       
         }
 
